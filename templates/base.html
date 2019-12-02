@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <title>Art Machine</title>
+        {% assets "styles" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}"/>
+        {% endassets %}
+        {% assets "scripts" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
+        {% if title %}
+        <title>ArtMachine - {{ title }}</title>
+        {% else %}
+        <title>ArtMachine</title>
+        {% endif %}
+    </head>
+    <body>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

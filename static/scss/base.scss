@@ -1,0 +1,40 @@
+@import "static/scss/colors";
+
+* {
+  outline: none;
+  border-style: none;
+  border-radius: 0px;
+}
+
+body {
+  background-color: $dark;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.no-select {
+  user-select: none;
+}
+
+.prompt {
+  position: relative;
+  border: 1px solid $darker;
+  border-radius: 6px;
+  background-color: $darker;
+  padding: 18px 12px;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+
+.image {
+    width: 100vw;
+    height: auto;
+    max-width: none;
+    max-height: 100vh;
+    object-fit: contain;
+}
