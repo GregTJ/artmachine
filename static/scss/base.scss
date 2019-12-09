@@ -31,10 +31,7 @@ html, body {
   font-size: 14px;
 }
 
-.image {
-    width: 100vw;
-    height: auto;
-    max-width: none;
-    max-height: 100vh;
-    object-fit: contain;
+#randomImage {
+  width:100%;
+  height:100%;
 }

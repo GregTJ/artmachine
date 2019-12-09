@@ -56,7 +56,7 @@ def distort(img: np.ndarray, destructive=2, nondestructive=1) -> Image:
 
     for i in range(destructive + nondestructive):
         effect = choice(tuple(effects))
-        effects -= {effect}
+        effects.remove(effect)
         img = effect(img)
 
     return Image.fromarray((img * 255).astype('uint8'))
