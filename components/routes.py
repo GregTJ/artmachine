@@ -15,7 +15,9 @@ def register(app, request):
     @app.route('/generate', methods=['get', 'post'])
     def generate():
         query = ' '.join(choice(NOUNS) for i in range(app.config['NOUN_COUNT']))
-        results = search(app.config['GOOGLE_API_KEY'], app.config['GOOGLE_CSE_CX'], request.args.get('query', query))
+        results = search(app.config['GOOGLE_API_KEY'],
+                         app.config['GOOGLE_CSE_CX'],
+                         request.args.get('query', query))
         img = retrieve_random(results)
         img = distort(img, app.config['EFFECT_COUNT'])
         stream = BytesIO()
