@@ -26,9 +26,9 @@ function generateImage () {
 
 async function refreshImage () {
     const img = await generateImage().then(r => URL.createObjectURL(r.response))
-    const element = document.querySelector('#randomImage').src
-    URL.revokeObjectURL(element.src)
-    element.src = img
+    const url = document.querySelector('#randomImage').src
+    if (url) { URL.revokeObjectURL(url) }
+    document.querySelector('#randomImage').src = img
 }
 
 document.addEventListener('DOMContentLoaded', () => {
