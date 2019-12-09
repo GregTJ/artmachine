@@ -12,21 +12,18 @@ from urllib.parse import quote
 def register(app, request):
     @app.route('/')
     def index():
-        query = ' '.join(choice(NOUNS) for i in range(app.config['NOUN_COUNT']))
-        return render_template('/home.html', query=query, query_endpoint=f'/generate?query={quote(query)}')
+        return render_template('/home.html')
 
     @app.route('/generate', methods=['get', 'post'])
     def generate():
-        if 'query' in request.args:
-            results = search(app.config['GOOGLE_API_KEY'], app.config['GOOGLE_CSE_CX'], request.args['query'])
-            img = retrieve_random(results)
-            img = distort(img, app.config['EFFECT_COUNT'])
-            stream = BytesIO()
-            img.save(stream, 'png')
-            stream.seek(0)
-            return send_file(stream, mimetype='image/png')
-
-        return Response(dumps({}), mimetype='application/json')
+        query = ' '.join(choice(NOUNS) for i in range(app.config['NOUN_COUNT']))
+        results = search(app.config['GOOGLE_API_KEY'], app.config['GOOGLE_CSE_CX'], request.args.get('query', query))
+        img = retrieve_random(results)
+        img = distort(img, app.config['EFFECT_COUNT'])
+        stream = BytesIO()
+        img.save(stream, 'png')
+        stream.seek(0)
+        return send_file(stream, mimetype='image/png')
 
     @app.errorhandler(HTTPException)
     def error(e):

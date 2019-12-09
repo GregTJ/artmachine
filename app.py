@@ -8,3 +8,4 @@ app.config.from_object(Config)
 
 bundles.register(app)
 routes.register(app, request)
+app.run()
