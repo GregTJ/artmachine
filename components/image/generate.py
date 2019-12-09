@@ -7,7 +7,7 @@ import numpy as np
 from PIL import Image
 from googleapiclient.discovery import build
 
-from components.image.effects import EFFECTS
+from components.image.effects import NONDESTRUCTIVE, DESTRUCTIVE
 
 with open('./components/image/nouns.txt', 'r') as nouns:
     NOUNS = nouns.read().splitlines()
@@ -45,11 +45,18 @@ def retrieve_random(urls: set) -> np.ndarray:
     raise Exception('No valid images found in url set.')
 
 
-def distort(img: np.ndarray, count: int = 3) -> Image:
-    effects = EFFECTS.copy()
-    for i in range(count):
-        effect = choice(tuple(EFFECTS))
-        effects -= {effect}
+def distort(img: np.ndarray, destructive=2, nondestructive=1) -> Image:
+    effects = set()
+
+    for i in range(destructive):
+        effects.add(choice(tuple(DESTRUCTIVE - effects)))
+
+    for i in range(nondestructive):
+        effects.add(choice(tuple(NONDESTRUCTIVE - effects)))
+
+    for i in range(destructive + nondestructive):
+        effect = choice(tuple(effects))
+        effects -= effect
         img = effect(img)
 
     return Image.fromarray((img * 255).astype('uint8'))

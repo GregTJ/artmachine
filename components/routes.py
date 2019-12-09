@@ -10,16 +10,16 @@ from components.image.generate import search, retrieve_random, distort, NOUNS
 def register(app, request):
     @app.route('/')
     def index():
-        return render_template('/home.html')
+        return render_template('/home.html', IMAGE_REFRESH_INTERVAL=app.config['IMAGE_REFRESH_INTERVAL'])
 
     @app.route('/generate', methods=['get', 'post'])
     def generate():
-        query = ' '.join(choice(NOUNS) for i in range(app.config['NOUN_COUNT']))
+        query = ' '.join(choice(NOUNS) for i in range(2))
         results = search(app.config['GOOGLE_API_KEY'],
                          app.config['GOOGLE_CSE_CX'],
                          request.args.get('query', query))
         img = retrieve_random(results)
-        img = distort(img, app.config['EFFECT_COUNT'])
+        img = distort(img)
         stream = BytesIO()
         img.save(stream, 'png')
         stream.seek(0)

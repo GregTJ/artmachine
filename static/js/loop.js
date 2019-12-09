@@ -26,13 +26,12 @@ function generateImage () {
 
 async function refreshImage () {
     const img = await generateImage().then(r => URL.createObjectURL(r.response))
-    const url = document.querySelector('#randomImage').src
-    if (url) { URL.revokeObjectURL(url) }
-    document.querySelector('#randomImage').src = img
-
+    const element = document.querySelector('#randomImage').src
+    URL.revokeObjectURL(element.src)
+    element.src = img
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   refreshImage()
-  setInterval(refreshImage, 1000 * 60 * 2)
+  setInterval(refreshImage, imageRefreshInterval)
 })

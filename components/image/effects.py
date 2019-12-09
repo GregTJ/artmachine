@@ -123,7 +123,5 @@ def pixel_sort(img, rotation=None, condition=lambda lum: (lum > 1 / 3) & (lum < 
     return numpy.rot90(pixels, -rotation)
 
 
-EFFECTS = {greyscale, invert, roll, sobel,
-           frequency_mosh, channel_swap,
-           sine, contrast, solarize, inset,
-           quantize, aberrate, pixel_sort}
+NONDESTRUCTIVE = {greyscale, invert, channel_swap, contrast, solarize}
+DESTRUCTIVE = {sobel, frequency_mosh, sine, quantize, pixel_sort, roll, inset, aberrate}
