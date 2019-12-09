@@ -1,7 +1,4 @@
 {% extends "base.html" %}
 {% block content %}
-{% assets "home_scripts" %}
-<script type="text/javascript" src="{{ ASSET_URL }}"></script>
-{% endassets %}
-<img src="" id="randomImage" class="image">
+<img src="{{ query_endpoint }}" alt="{{ query }}" class="image">
 {% endblock %}
