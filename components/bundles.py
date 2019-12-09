@@ -8,8 +8,8 @@ def register(app):
     global assets
     assets = Environment(app)
 
-    scripts = Bundle(
-        "js/helpers.js",
+    home_scripts = Bundle(
+        "js/loop.js",
         filters='jsmin', output='gen/packed.js')
 
     styles = Bundle(
@@ -19,5 +19,5 @@ def register(app):
         filters=get_filter('libsass', as_output=True, style='compressed'),
         output='gen/packed.css')
 
-    assets.register('scripts', scripts)
+    assets.register('home_scripts', home_scripts)
     assets.register('styles', styles)
