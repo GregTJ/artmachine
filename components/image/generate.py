@@ -1,6 +1,6 @@
 from functools import lru_cache
 from random import choice
-from urllib.error import HTTPError
+from urllib.error import URLError
 from urllib.request import urlopen
 
 import numpy as np
@@ -38,7 +38,7 @@ def retrieve_random(urls: set) -> np.ndarray:
 
         try:
             img = Image.open(urlopen(url))
-        except HTTPError:
+        except URLError:
             continue
 
         return np.array(img.convert('RGB')) / 255
