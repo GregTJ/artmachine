@@ -21,7 +21,7 @@ def search(api_key: str, cse_cx: str, query: str, count: int = 10) -> set:
                   'q': query,
                   'searchType': 'image',
                   'fileType': 'png',
-                  'imgSize': 'huge',
+                  'imgSize': 'xlarge',
                   'imgType': 'photo',
                   'imgColorType': 'color',
                   'safe': 'off'}
