@@ -31,7 +31,7 @@ async function refreshImage () {
     document.querySelector('#randomImage').src = img
     const minimum = 5 * 1000
     const maximum = 15 * 60 * 1000
-    setTimeout(myFunction, Math.random() * (maximum - minimum) + minimum)
+    setTimeout(refreshImage, Math.random() * (maximum - minimum) + minimum)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
