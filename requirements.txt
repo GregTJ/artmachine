@@ -13,7 +13,7 @@ jsmin==2.2.2
 libsass==0.19.4
 MarkupSafe==1.1.1
 numpy==1.17.4
-Pillow==6.2.1
+Pillow==6.2.2
 pyasn1==0.4.8
 pyasn1-modules==0.2.7
 rsa==4.0
