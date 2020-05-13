@@ -1,2 +1,2 @@
 # artmachine
-A generative art device.
+In collaboration with https://www.ryanschlumberger.com/
