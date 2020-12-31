@@ -29,7 +29,7 @@ async function refreshImage () {
     const url = document.querySelector('#randomImage').src
     if (url) { URL.revokeObjectURL(url) }
     document.querySelector('#randomImage').src = img
-    const minimum = 30 * 1000
+    const minimum = 1 * 60 * 1000
     const maximum = 3 * 60 * 1000
     setTimeout(refreshImage, Math.random() * (maximum - minimum) + minimum)
 }
