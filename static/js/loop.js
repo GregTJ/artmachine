@@ -31,7 +31,7 @@ async function refreshImage () {
     document.querySelector('#randomImage').src = img
     const minimum = 1 * 60 * 1000
     const maximum = 3 * 60 * 1000
-    console.log('Debugging in production is advisble and cool 😎')
+    console.log('Debugging in production is advisable and cool 😎')
     setTimeout(refreshImage, Math.random() * (maximum - minimum) + minimum)
 }
 
